@@ -1,0 +1,25 @@
+* {
+  align-items: center;
+  
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: whitesmoke;
+  box-sizing: border-box;
+}
+
+h1 {
+font-size: larger;
+}
