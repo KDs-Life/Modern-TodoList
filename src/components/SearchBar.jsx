@@ -1,4 +1,5 @@
 import  { useState } from 'react';
+import "./SearchBar.css"
 
 // Sidenote 1: Diese Navbar-Komponente wird ein Suchfeld anzeigen.
 function Navbar({ onSearch }) {
@@ -12,7 +13,7 @@ function Navbar({ onSearch }) {
   };
 
   return (
-    <div className="navbar">
+    <div className="searchBar">
       {/* Sidenote 5: Das Eingabefeld, in dem der Benutzer seinen Suchbegriff eingeben kann. */}
       <input
         type="text"

@@ -93,30 +93,33 @@ function TodoList({ searchTerm }) {
 
   return (
     <form onSubmit={handlesubmit}>
-      <div>
+      <div className="inputField">
         <input
           type="text"
           id="todoInput"
           placeholder="Deine Aufgaben..."
           required
         />
-        <button id="addButton">Add Todo</button>
+        <div className="addBtnBox">
+          <button id="addButton">Add Todo</button>
+        </div>
+
         <ul>
           {filter.map((todo) => (
             <li key={todo.id}>
+              <div className="todo-title">
+                {isEditing && editId === todo.id ? (
+                  // If in edit mode, show an input field
+                  <input
+                    type="text"
+                    value={editText}
+                    onChange={(e) => setEditText(e.target.value)}
+                  />
+                ) : (
+                  todo.title
+                )}
+              </div>
               {isEditing && editId === todo.id ? (
-                // Wenn im Bearbeitungsmodus, zeige ein Eingabefeld
-                <input
-                  type="text"
-                  value={editText}
-                  onChange={(e) => setEditText(e.target.value)}
-                />
-              ) : (
-                // Ansonsten zeige den Aufgabentext
-                todo.title
-              )}
-              {isEditing && editId === todo.id ? (
-                // Wenn im Bearbeitungsmodus, zeige einen "Save"-Button
                 <button
                   className="saveBtn"
                   type="button"
@@ -124,20 +127,21 @@ function TodoList({ searchTerm }) {
                   Save
                 </button>
               ) : (
-                // Ansonsten zeige "Delete" und "Edit"-Buttons
-                <>
-                  <button
-                    className="listBtn"
-                    type="button"
-                    onClick={() => deleteButton(todo.id)}>
-                    Delete
-                  </button>
+                <div className="todo-actions">
+                  <div className="button-container">
+                    <button
+                      className="listBtn"
+                      type="button"
+                      onClick={() => deleteButton(todo.id)}>
+                      Delete
+                    </button>
+                  </div>
                   <button
                     type="button"
                     onClick={() => startEditing(todo.id, todo.title)}>
                     Edit
                   </button>
-                </>
+                </div>
               )}
             </li>
           ))}
